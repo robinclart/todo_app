@@ -1,0 +1,14 @@
+<h1>Listing todos</h1>
+
+<% @todos.each do |todo| %>
+  <li>
+    <%= check_box_tag :done, 1, todo.done, data: { sync: complete_todo_path(todo, format: 'json') } %>
+    <%= label_tag :done, todo.desc %>
+    <%= link_to "edit", edit_todo_path(todo) %>
+    <%= link_to 'destroy', todo, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </li>
+<% end %>
+
+<p>
+  <%= link_to 'New Todo', new_todo_path %>
+</p>

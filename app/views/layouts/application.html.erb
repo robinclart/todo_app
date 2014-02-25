@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TodoApp</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div>
+<% if current_user %>
+  <%= current_user.email %>
+  <%= link_to "Logout", session_path, method: :delete %>
+<% end %>
+
+<%= yield %>
+</div>
+</body>
+</html>

@@ -1,0 +1,8 @@
+<li>
+  <%= label_tag nil do %>
+    <%= check_box_tag "done_#{@todo.id}", 1, @todo.done, data: { sync: complete_project_todo_path(@project, @todo, format: 'json') } %>
+    <%= @todo.desc %>
+  <% end %>
+  <%= link_to "edit", edit_project_todo_path(@project, @todo) %>
+  <%= link_to 'destroy', project_todo_path(@project, @todo), method: :delete, data: { confirm: 'Are you sure?' } %>
+</li>

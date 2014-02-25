@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @project.name %>
+</p>
+
+<p>
+  <strong>Desc:</strong>
+  <%= @project.desc %>
+</p>
+
+<%= form_for [@project, Todo.new], data: { new_todo: true } do |f| %>
+  <%= f.text_field :desc %>
+  <%= f.submit "Add" %>
+<% end %>
+
+<%= render "todos/todos", project: @project, todos: @project.todos.to_a.sort { |a,b| a.created_at <=> b.created_at } %>
+
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %>
